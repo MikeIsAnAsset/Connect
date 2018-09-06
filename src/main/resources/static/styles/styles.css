@@ -1,0 +1,45 @@
+.container{ width: 500px; 
+			height: 500px;
+			color: red; }
+			
+.nav{
+	
+}
+
+.menubar
+{
+	/* position:relative; */
+	height:75px;
+	padding-top:0px;
+	box-shadow:0 12px 20px rgba(0,0,0,.9);
+
+	background: -webkit-radial-gradient(center bottom, rgba(160, 201, 215, 0.8) 0%, rgba(160, 201, 215, 0) 70%), 
+				-webkit-linear-gradient(top, black 0%,#282F44 6%,#2C3551 52%,#354262 91%,#050C54 100%);
+
+	background: -moz-radial-gradient(center bottom, rgba(160, 201, 215, 0.8) 0%, rgba(160, 201, 215, 0) 70%), 
+				-moz-linear-gradient(top, black 0%,#282F44 6%,#2C3551 52%,#354262 91%,#050C54 100%);
+}
+
+.menubar::before
+{
+	content:"";
+	position:absolute;
+	background:-webkit-radial-gradient(center, rgba(66, 200, 239, 1) 0%, rgba(3, 171, 228, 0) 80%);
+	background:-moz-radial-gradient(center, rgba(66, 200, 239, 1) 0%, rgba(3, 171, 228, 0) 80%);
+	bottom:0;
+	top:85px;
+	left:100px;
+	right:100px;
+}
+
+.menubar::after
+{
+	content:"";
+	position:absolute;
+	background:-webkit-radial-gradient(center, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+	background:-moz-radial-gradient(center, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+	bottom:5px;
+	top:76px;
+	left:40px;
+	right:40px;
+}

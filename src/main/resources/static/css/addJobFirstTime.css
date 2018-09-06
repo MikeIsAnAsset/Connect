@@ -1,0 +1,80 @@
+body {
+	margin-top: 40px;
+}
+
+.stepwizard-step p {
+	margin-top: 10px;
+}
+
+.stepwizard-row {
+	display: table-row;
+}
+
+.stepwizard {
+	display: table;
+	width: 100%;
+	max-width: 45%;
+	position: relative;
+}
+
+.stepwizard-step button[disabled] {
+	opacity: 1 !important;
+	filter: alpha(opacity = 100) !important;
+}
+
+form {
+	width: 100%;
+	max-width: 45%;
+}
+
+.alignment input {
+	width: 100%;
+	clear: both;
+}
+
+.stepwizard-row:before {
+	top: 14px;
+	bottom: 0;
+	position: absolute;
+	content: " ";
+	width: 100%;
+	height: 1px;
+	background-color: #ccc;
+	z-order: 0;
+}
+
+.stepwizard-step {
+	display: table-cell;
+	text-align: center;
+	position: relative;
+}
+
+.stepwizard-step .btn-circle {
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	padding: 6px 0;
+	font-size: 12px;
+	line-height: 1.428571429;
+	border-radius: 15px;
+}
+
+.checkboxes {
+	text-align: center;
+}
+
+.checkboxes td {
+	margin: 0px 0px 0px 0px;
+}
+
+.checkboxes form:checkboxes {
+	margin: 0px 20px 0px 3px;
+}
+
+.modalSizing {
+overflow: auto;
+}
+
+.displayFlexGrow {
+	display: flex-grow;
+}
