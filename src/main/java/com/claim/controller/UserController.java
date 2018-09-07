@@ -39,6 +39,7 @@ public class UserController {
 			return new ModelAndView("profile");
 		}
 		else
+			session.setAttribute("wrongLogin", "Invalid login.  Please try again.");
 			return new ModelAndView("login", "user", new User());
 	}
 	

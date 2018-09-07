@@ -41,7 +41,7 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Search</a></li>
+			<li><a href="/search">Search</a></li>
 			<li><a href="#">Events</a></li>
 			<li><a href="/resources">Resources</a></li>
 		</ul>

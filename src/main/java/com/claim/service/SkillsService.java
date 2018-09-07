@@ -6,13 +6,16 @@ import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.claim.entity.Job;
 import com.claim.entity.Skills;
 import com.claim.repository.SkillsRepository;
 
@@ -125,7 +128,7 @@ public class SkillsService {
 	
 	
 	
-/*	
+	
 	
 	// Loop through all jobs and return jobs sorted by number of skills that match each job
 	public TreeMap<Integer, Integer> findAllJobsWithMatchingSkills(Skills skillsToMatch) {
@@ -159,5 +162,5 @@ public class SkillsService {
 		public int compare(K s1, K s2) {
 			return -map.get(s1).compareTo(map.get(s2));//descending order	
 		}
-	}*/
+	}
 }

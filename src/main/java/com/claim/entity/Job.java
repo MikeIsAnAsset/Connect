@@ -62,7 +62,7 @@ public class Job implements Serializable {
 	@Column
 	private String employmentType;
 	
-	@Column
+	@Column(columnDefinition = "LONGBLOB")
 	private Skills skills;
 	
 	@Column
@@ -251,6 +251,7 @@ public class Job implements Serializable {
 
 
 	@OneToOne(mappedBy = "Skills", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name = "skillsId")
 	public Skills getSkills() {
 		return skills;
 	}

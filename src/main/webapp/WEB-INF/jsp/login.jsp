@@ -20,6 +20,8 @@
 
 		<input type="submit" value="Login">
 
+${wrongLogin}
+
 	</form:form>
 
 </body>

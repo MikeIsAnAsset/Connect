@@ -11,6 +11,6 @@ import com.claim.entity.FileUploads;
 
 @Repository
 public interface FileUploadsRepository extends JpaRepository<FileUploads, Integer> {
-	@Query("select F from FileUploads F")
+	@Query(value="SELECT * FROM FileUploads", nativeQuery=true)
 	public ArrayList<FileUploads> getAllFiles();
 }

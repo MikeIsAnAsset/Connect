@@ -17,6 +17,8 @@ public class Address implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int addressId;
 	
+	private Integer CompanyProfileId;
+	
 	private String address;
 	private String city;
 	private String state;
@@ -24,6 +26,16 @@ public class Address implements Serializable{
 
 	/*private JobSeekerProfile jobSeekerProfile;*/
 
+	@OneToOne(mappedBy = "companyId")
+	public Integer getCompanyProfileId() {
+		return CompanyProfileId;
+	}
+
+	public void setCompanyProfileId(Integer companyProfileId) {
+		CompanyProfileId = companyProfileId;
+	}
+	
+	
 	public String getAddress() {
 		return address;
 	}

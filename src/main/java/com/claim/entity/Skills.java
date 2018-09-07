@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Skills implements Serializable{
@@ -14,12 +15,14 @@ public class Skills implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int skillsId;
 	
-	private	boolean	dotNet;
-	private	boolean	A_B_Testing;
+	private int jobId;
+	
+	private	boolean	dotNet = false;
+	private	boolean	A_B_Testing = false;
 	private	boolean	accountDevelopment = false;
-	private	boolean	accountManagement;
-	private	boolean	accountManagementOps;
-	private	boolean	adCopy;
+	private	boolean	accountManagement = false;
+	private	boolean	accountManagementOps = false;
+	private	boolean	adCopy = false;
 	private	boolean	administrativeSupport;
 	private	boolean	adobeCreativeSuite;
 	private	boolean	affiliateMarketing;
@@ -59,6 +62,20 @@ public class Skills implements Serializable{
 
 	public void setSkillsId(int skillsId) {
 		this.skillsId = skillsId;
+	}
+
+
+
+	@OneToOne(mappedBy = "jobId")
+	public int getJobId() {
+		return jobId;
+	}
+
+
+
+
+	public void setJobId(int jobId) {
+		this.jobId = jobId;
 	}
 
 
@@ -546,7 +563,7 @@ public class Skills implements Serializable{
 	
 	
 	
-	/*// Compare two skill objects
+	// Compare two skill objects
 	public static int countMatchingSkillsInTwoObjects(Skills skillsToMatch, Job job) {
 		int count = 0;
 		if (skillsToMatch.isDotNet() && job.getSkills().isDotNet()) {
@@ -610,7 +627,7 @@ public class Skills implements Serializable{
 		}
 		
 		return count;
-	}*/
+	}
 	
 	
 }

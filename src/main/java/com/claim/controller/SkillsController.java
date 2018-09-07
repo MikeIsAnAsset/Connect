@@ -1,7 +1,5 @@
 package com.claim.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.claim.entity.Helper;
 import com.claim.entity.Skills;
 import com.claim.repository.SkillsRepository;
 import com.claim.service.SkillsService;
@@ -25,22 +23,24 @@ public class SkillsController {
 	@Autowired
 	SkillsService skillsService = new SkillsService();
 	
+	@Autowired
+	Helper helper;
 	
 	@Autowired
 	SkillsRepository skillsRepository;
 	
-/*	@RequestMapping(value="/search",
-			consumes=MediaType.APPLICATION_JSON_VALUE,
-			produces=MediaType.APPLICATION_JSON_VALUE,
-			method=RequestMethod.GET)
-	public ResponseEntity<TreeMap<Integer, Integer>> searchJobs(@RequestBody Skills skillsToSearch){
+/*	@RequestMapping(value="/search", method=RequestMethod.GET)
+	public ModelAndView searchJobs(@RequestBody Skills skillsToSearch){
 //		skillsToSearch = setSkills();
 		TreeMap<Integer, Integer> jobsWithMatchingSkills = skillsService.findAllJobsWithMatchingSkills(skillsToSearch);
 		System.out.println(jobsWithMatchingSkills.toString());
-		return new ResponseEntity<>(jobsWithMatchingSkills, HttpStatus.CREATED);
-	}
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject(jobsWithMatchingSkills);
+		modelAndView.addObject("fieldNames", helper.obtainFieldNames());
+		return modelAndView("search");
+	}*/
 	
-	@RequestMapping(value="/fetchAllSkills",
+/*	@RequestMapping(value="/fetchAllSkills",
 			consumes=MediaType.APPLICATION_JSON_VALUE,
 			produces=MediaType.APPLICATION_JSON_VALUE,
 			method=RequestMethod.GET)

@@ -1,6 +1,7 @@
 package com.claim.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.claim.entity.CompanyProfile;
@@ -12,9 +13,17 @@ public class CompanyProfileService {
 	@Autowired
 	CompanyProfileRepository companyProfileRepository;
 	
-	public void saveCompanyProfile(CompanyProfile companyProfile) {
-		companyProfileRepository.save(companyProfile);
-		
+	public CompanyProfile saveCompanyProfile(CompanyProfile companyProfile) {
+		return companyProfileRepository.save(companyProfile);
 	}
 
+	public Integer getCompanyProfileId(String name, String phone) {
+		Integer id = companyProfileRepository.findCompanyIdByNameAndPhone(name, phone);
+		return id;
+	}
+		
+
+
+	
+	
 }

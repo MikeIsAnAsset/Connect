@@ -14,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -31,21 +32,28 @@ public class CompanyProfile implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int companyId;
+	
+	private int jobId;
+	
+	
+	
 	private String companyName;
 	private boolean isCompanyNameConfidential;
 	private String companyLogo;
 	
 	// Why work at this company
 	private String companyOneLineTextPitch;
-	private File companyVideoPitch;
 	
-	@Column
+	@Column(columnDefinition = "LONGBLOB")
+	private FileUploads companyVideoPitch;
+	
+	@Column(columnDefinition = "LONGBLOB")
 	private PerksBenefits companyPerksBenefits;
 	
 	// i.e. 1 to 9 employees
 	private int companySize;
 	
-	@Column
+	@Column(columnDefinition = "LONGBLOB")
 	private Address address;
 	
 	@Column
@@ -75,7 +83,7 @@ public class CompanyProfile implements Serializable {
 	
 	// This doesn't include fields users, jobs, addresses
 	public CompanyProfile(String companyName, boolean isCompanyNameConfidential, String companyLogo,
-			String companyOneLineTextPitch, File companyVideoPitch, PerksBenefits companyPerksBenefits,
+			String companyOneLineTextPitch, FileUploads companyVideoPitch, PerksBenefits companyPerksBenefits,
 			int companySize, Address address, String phone, String website, String industry) {
 		super();
 		this.companyName = companyName;
@@ -93,6 +101,21 @@ public class CompanyProfile implements Serializable {
 
 	// Getters & Setters
 
+	@OneToOne(mappedBy = "jobId")
+	public int getJobId() {
+		return jobId;
+	}
+
+
+
+
+	public void setJobId(int jobId) {
+		this.jobId = jobId;
+	}
+	
+	
+	
+	
 	@OneToOne(mappedBy = "PerksBenefits", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	public PerksBenefits getCompanyPerksBenefits() {
 		return companyPerksBenefits;
@@ -119,9 +142,7 @@ public class CompanyProfile implements Serializable {
 		this.isCompanyNameConfidential = isCompanyNameConfidential;
 	}
 
-	public void setAddresses(ArrayList<Address> addresses) {
-		this.addresses = addresses;
-	}
+
 
 	public String getCompanyLogo() {
 		return companyLogo;
@@ -139,11 +160,13 @@ public class CompanyProfile implements Serializable {
 		this.companyOneLineTextPitch = companyOneLineTextPitch;
 	}
 
-	public File getCompanyVideoPitch() {
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "companyProfileId")
+	public FileUploads getCompanyVideoPitch() {
 		return companyVideoPitch;
 	}
 
-	public void setCompanyVideoPitch(File companyVideoPitch) {
+	public void setCompanyVideoPitch(FileUploads companyVideoPitch) {
 		this.companyVideoPitch = companyVideoPitch;
 	}
 
@@ -174,15 +197,21 @@ public class CompanyProfile implements Serializable {
 	public Address getAddress() {
 		return address;
 	}
+	
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	@OneToMany(mappedBy = "CompanyProfile", cascade = CascadeType.ALL)
 	public ArrayList<Address> getAddresses() {
 		return addresses;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddresses(ArrayList<Address> addresses) {
+		this.addresses = addresses;
 	}
+	
+
 
 	public int getCompanyId() {
 		return companyId;

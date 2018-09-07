@@ -183,10 +183,25 @@ Name:  ${entry} <br />
 
 
       	<!--List of sheet music files with option to upload a new file-->
+      	file start here 
       	<ul>
       		<c:forEach var="smFile" items="${allsmFiles}">
+      			
+      			
+      			this is a test for each
+      			
       			<li>
-      				<a href="C:\\Users\\mwin.cs-lap1-PC\\claimAcademy\\CarSalesWorkspace\\RegisterAndLogin\\src\\main\\java\\Upload\\${smFile.filename}"> ${smFile.filename}  </a>
+      				
+      				
+      				
+      				
+      				
+      				
+      				<img src="data:image/jpg;base64,${smFile.showPicture()}" class="img-circle"
+
+height="65" width="65" alt="Avatar">
+      				
+      				
       			</li>
       		</c:forEach>
       	</ul>
